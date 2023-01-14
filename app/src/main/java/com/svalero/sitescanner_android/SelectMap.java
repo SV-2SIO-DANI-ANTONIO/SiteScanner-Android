@@ -71,7 +71,7 @@ public class SelectMap extends AppCompatActivity implements Style.OnStyleLoaded 
     private void addMarker(Point point) {
         PointAnnotationOptions pointAnnotationOptions = new PointAnnotationOptions()
                 .withPoint(point)
-                .withIconImage(BitmapFactory.decodeResource(getResources(), R.mipmap.red_marker));
+                .withIconImage(BitmapFactory.decodeResource(getResources(), R.mipmap.red_marker_foreground));
         pointAnnotationManager.create(pointAnnotationOptions);
     }
 

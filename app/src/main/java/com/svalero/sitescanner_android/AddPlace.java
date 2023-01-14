@@ -76,6 +76,7 @@ public class AddPlace extends AppCompatActivity {
         place.setName(name);
         place.setLatitude(latitude);
         place.setLongitude(longitude);
+        place.setVisited(false);
 
         //Conseguimos la ruta de almacenamiento, si no existe, la creamos
         File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "SiteScanner");
@@ -110,8 +111,8 @@ public class AddPlace extends AppCompatActivity {
 
                 db.placeDao().update(place);
                 Toast.makeText(this, R.string.correctEdit, Toast.LENGTH_LONG).show();
-                //Intent intent = new Intent(this, MainActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
             } catch (SQLiteConstraintException sce) {
                 Snackbar.make(etPlaceName, R.string.errorRegister, BaseTransientBottomBar.LENGTH_LONG).show();
             }
@@ -127,10 +128,10 @@ public class AddPlace extends AppCompatActivity {
                     place.setLongitude(latitude);
                     place.setLongitude(longitude);
 
-                    db.placeDao().update(place);
+                    db.placeDao().insert(place);
 
-                    //Intent intent = new Intent(this, MainActivity.class);
-                    //startActivity(intent);
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(this, R.string.errorMarker, Toast.LENGTH_LONG).show();
                 }
@@ -141,8 +142,8 @@ public class AddPlace extends AppCompatActivity {
     }
 
     public void back(View view){
-        //Intent intent = new Intent(this, MainActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void makePhoto(View view){
