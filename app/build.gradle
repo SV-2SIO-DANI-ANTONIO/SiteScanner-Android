@@ -52,6 +52,5 @@ dependencies {
     //images
     implementation 'com.squareup.picasso:picasso:2.71828'
 //Mapbox
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.7.1'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v9:0.9.0'
-    i
+    implementation 'com.mapbox.maps:android:10.10.0'
+}

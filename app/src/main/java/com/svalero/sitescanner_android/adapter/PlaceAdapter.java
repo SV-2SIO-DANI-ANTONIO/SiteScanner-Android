@@ -4,6 +4,7 @@ import static com.svalero.sitescanner_android.db.Constants.DATABASE_NAME;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.svalero.sitescanner_android.R;
+import com.svalero.sitescanner_android.ShowMap;
 import com.svalero.sitescanner_android.db.AppDatabase;
 import com.svalero.sitescanner_android.domain.Place;
 
@@ -75,23 +77,22 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.SuperheroHol
             map = view.findViewById(R.id.btnMap);
             delete = view.findViewById(R.id.btnDelete);
             //TODO addplace.class edit.setOnClickListener(v -> editPlace(getAdapterPosition()));
-            //TODO showMap map.setOnClickListener(v -> showMap(getAdapterPosition()));
+            map.setOnClickListener(v -> showMap(getAdapterPosition()));
             delete.setOnClickListener(v -> deletePlace(getAdapterPosition()));
 
 
         }
     }
 
-    /*
-    //TODO Showmap
-        public void showMap(int position) {
 
-            Place place = places.get(position);
-            Intent intent = new Intent(context, ShowMap.class);
-            intent.putExtra("place", place);
-            context.startActivity(intent);
-        }
-    */
+    public void showMap(int position) {
+
+        Place place = places.get(position);
+        Intent intent = new Intent(context, ShowMap.class);
+        intent.putExtra("place", place);
+        context.startActivity(intent);
+    }
+
     public void deletePlace(int position) {
         AlertDialog.Builder deleteDialog = new AlertDialog.Builder(context);
         deleteDialog.setMessage(R.string.confirmation).setTitle(R.string.deleteMessage)
