@@ -5,11 +5,13 @@ import static com.svalero.sitescanner_android.db.Constants.DATABASE_NAME;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,11 +23,11 @@ import com.svalero.sitescanner_android.ShowMap;
 import com.svalero.sitescanner_android.db.AppDatabase;
 import com.svalero.sitescanner_android.domain.Place;
 
+import java.io.File;
 import java.util.List;
 
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.SuperheroHolder> {
     public Context context;
-
     public List<Place> places;
 
 
@@ -46,9 +48,13 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.SuperheroHol
         Place place = db.placeDao().getById(places.get(position).getId());
         holder.name.setText(place.getName());
         holder.address.setText(place.getAddress());
-        holder.visited.setText(place.getAddress());
+        holder.visited.setChecked(place.isVisited());
         holder.latitude.setText(String.valueOf(place.getLatitude()));
         holder.longitude.setText(String.valueOf(place.getLongitude()));
+        if(places.get(position).getFilePath() != null) {
+            Uri imageUri = Uri.fromFile(new File(places.get(position).getFilePath()));
+            holder.imageView.setImageURI(imageUri);
+        }
     }
 
     public int getItemCount() {
@@ -65,6 +71,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.SuperheroHol
         public Button map;
         public View parentView;
         public CheckBox visited;
+        public ImageView imageView;
 
         public SuperheroHolder(View view) {
             super(view);
@@ -80,7 +87,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.SuperheroHol
             edit.setOnClickListener(v -> editPlace(getAdapterPosition()));
             map.setOnClickListener(v -> showMap(getAdapterPosition()));
             delete.setOnClickListener(v -> deletePlace(getAdapterPosition()));
-
+            imageView = view.findViewById(R.id.imageView2);
 
         }
     }
