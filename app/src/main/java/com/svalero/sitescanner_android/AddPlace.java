@@ -2,6 +2,7 @@ package com.svalero.sitescanner_android;
 
 import static com.svalero.sitescanner_android.db.Constants.DATABASE_NAME;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -16,6 +17,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +29,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.svalero.sitescanner_android.db.AppDatabase;
 import com.svalero.sitescanner_android.domain.Place;
+import com.svalero.sitescanner_android.domain.Preference;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -128,6 +132,11 @@ public class AddPlace extends AppCompatActivity {
                     place.setLongitude(latitude);
                     place.setLongitude(longitude);
 
+                    Preference preference = db.preferenceDAO().getPreference();
+                    if(preference.isDefaultVisitedSelected()){
+                        place.setVisited(true);
+                    }
+
                     db.placeDao().insert(place);
 
                     Intent intent = new Intent(this, MainActivity.class);
@@ -151,6 +160,28 @@ public class AddPlace extends AppCompatActivity {
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.action_bar, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        if(item.getItemId() == R.id.menuMainAddPlace){
+            Intent intent = new Intent(this, AddPlace.class);
+            startActivity(intent);
+            return true;
+        } else if(item.getItemId() == R.id.menuMainAllMarkers){
+            //Intent intent = new Intent(this, Markers.class);
+            //startActivity(intent);
+            return true;
+        } else if(item.getItemId() == R.id.menuMainSettings){
+            Intent intent = new Intent(this, Preferences.class);
+            startActivity(intent);
+            return true;
+        }
+        return false;
     }
 
     public void selectMap(View view){

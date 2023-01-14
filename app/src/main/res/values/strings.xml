@@ -18,9 +18,13 @@
     <string name="mapSave">Save</string>
     <string name="mapDelete">Reset</string>
     <string name="mapMessage">Please, select a point in the map</string>
-    <string name="a"></string>
+    <string name="preferences1">Default Screen All Markers</string>
+    <string name="preferences2">Default Visited Checked</string>
+    <string name="preferceSave">Save</string>
+    <string name="preferceSaved">Settings saved!</string>
     <string name="actionBarAddPlace">Add Place</string>
     <string name="actionBarSeeMap">See all markers</string>
+    <string name="preferceSettings">Settings</string>
     <string name="confirmation">Yes</string>
     <string name="yes">YES</string>
     <string name="deleteMessage">Are you sure?</string>
