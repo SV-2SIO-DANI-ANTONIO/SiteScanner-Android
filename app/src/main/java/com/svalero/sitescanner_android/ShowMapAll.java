@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -118,12 +119,20 @@ public class ShowMapAll extends AppCompatActivity implements Style.OnStyleLoaded
 
     @SuppressLint("MissingPermission")
     private void gps() {
-        fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
-            if (location != null) {
-                wayLatitude = location.getLatitude();
-                wayLongitude = location.getLongitude();
-            }
-        });
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // Logic to handle location object
+                            wayLongitude = location.getLongitude();
+                            wayLatitude = location.getLatitude();
+
+                        }
+                    }
+                });
+
     }
 
 }
