@@ -19,6 +19,8 @@
     <string name="mapDelete">Reset</string>
     <string name="mapMessage">Please, select a point in the map</string>
     <string name="a"></string>
+    <string name="actionBarAddPlace">Add Place</string>
+    <string name="actionBarSeeMap">See all markers</string>
     <string name="confirmation">Yes</string>
     <string name="yes">YES</string>
     <string name="deleteMessage">Are you sure?</string>

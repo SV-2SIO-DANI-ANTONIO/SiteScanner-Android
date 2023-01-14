@@ -62,7 +62,7 @@ public class ShowMap extends AppCompatActivity implements Style.OnStyleLoaded {
     private void addMarker(double latitude, double longitude, String title) {
         PointAnnotationOptions pointAnnotationOptions = new PointAnnotationOptions()
                 .withPoint(Point.fromLngLat(longitude, latitude))
-                .withIconImage(BitmapFactory.decodeResource(getResources(), R.drawable.b_marker))
+                .withIconImage(BitmapFactory.decodeResource(getResources(), R.mipmap.red_marker_foreground))
                 .withTextField(title);
         pointAnnotationManager.create(pointAnnotationOptions);
     }
