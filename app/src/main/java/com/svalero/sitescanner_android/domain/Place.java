@@ -23,4 +23,5 @@ public class Place implements Serializable {
     private double latitude;
     private double longitude;
     private boolean visited;
+    private String filePath;
 }

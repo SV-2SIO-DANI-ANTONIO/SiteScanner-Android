@@ -1,5 +1,24 @@
 <resources>
     <string name="app_name">SiteScanner-Android</string>
+    <string name="addPlaceText">Name of the site:</string>
+    <string name="addPlaceHint">Site</string>
+    <string name="addPlaceAddress">Address of the site:</string>
+    <string name="addPlaceAddressHint">Address</string>
+    <string name="addPlaceMakePhoto">Make Photo</string>
+    <string name="addPlaceSelectMap">Select Map</string>
+    <string name="addPlaceRegister">Register</string>
+    <string name="addPlaceEdit">Edit</string>
+    <string name="addPlaceBack">Back</string>
+    <string name="errorRegister">Something went wrong. Try again!</string>
+    <string name="correctEdit">Edited!</string>
+    <string name="correctRegister">Registered!</string>
+    <string name="errorMarker">Please, select a point in the map!</string>
+    <string name="okMarker">Location OK!</string>
+    <string name="noMarker">No location selected!</string>
+    <string name="mapSave">Save</string>
+    <string name="mapDelete">Reset</string>
+    <string name="mapMessage">Please, select a point in the map</string>
+    <string name="a"></string>
     <string name="confirmation">Yes</string>
     <string name="yes">YES</string>
     <string name="deleteMessage">Are you sure?</string>
