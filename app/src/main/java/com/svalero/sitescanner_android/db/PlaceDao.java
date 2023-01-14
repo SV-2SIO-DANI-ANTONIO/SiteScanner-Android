@@ -15,14 +15,8 @@ public interface PlaceDao {
     @Query("SELECT * FROM place")
     List<Place> getAll();
 
-    @Query("SELECT * FROM place WHERE name = :name")
-    Place getByName(String name);
-
     @Query("SELECT * FROM place WHERE id = :id")
     Place getById(long id);
-
-    @Query("DELETE FROM place WHERE name = :name")
-    void deleteByName(String name);
 
     @Insert
     void insert(Place place);

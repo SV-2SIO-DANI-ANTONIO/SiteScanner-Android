@@ -19,16 +19,8 @@ public class Place implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private long id;
     private String name;
-    private String description;
     private String address;
     private double latitude;
     private double longitude;
-
-    public Place(String name, String description, String address, double latitude, double longitude) {
-        this.name = name;
-        this.description = description;
-        this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
+    private boolean visited;
 }
