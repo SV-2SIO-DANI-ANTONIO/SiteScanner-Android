@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SiteScanner-Android</string>
+    <string name="addPlaceText">Nombre del sitio:</string>
+    <string name="addPlaceHint">Sitio</string>
+    <string name="addPlaceAddress">Direccion del sitio:</string>
+    <string name="addPlaceAddressHint">Direccion</string>
+    <string name="addPlaceMakePhoto">Hacer foto</string>
+    <string name="addPlaceSelectMap">Seleccionar Mapa</string>
+    <string name="addPlaceRegister">Registrar</string>
+    <string name="addPlaceEdit">Editar</string>
+    <string name="addPlaceBack">Volver</string>
+    <string name="errorRegister">Algo ha ido mal. Prueba de nuevo!</string>
+    <string name="correctEdit">Editado!</string>
+    <string name="correctRegister">Registrado!</string>
+    <string name="errorMarker">Por favor, selecciona un punto en el mapa!</string>
+    <string name="okMarker">Localizacion OK!</string>
+    <string name="noMarker">Localizacio no seleccionada!</string>
+    <string name="mapSave">Guardar</string>
+    <string name="mapDelete">Resetar</string>
+    <string name="mapMessage">Por favor, selecciona un punto en el mapa!</string>
+    <string name="preferences1">Pantalla Principal todos los marcadores</string>
+    <string name="preferences2">Visitado por defect</string>
+    <string name="preferceSave">Guardar</string>
+    <string name="preferceSaved">Preferencias guardadas!</string>
+    <string name="actionBarAddPlace">Añadir sitio</string>
+    <string name="actionBarSeeMap">Ver todos los marcadores</string>
+    <string name="preferceSettings">Preferencias</string>
+    <string name="confirmation">Si</string>
+    <string name="yes">SIS</string>
+    <string name="deleteMessage">¿Estas seguro?</string>
+    <string name="no">NO</string>
+    <string name="Map">MAPA</string>
+    <string name="Edit">EDITAR</string>
+    <string name="Delete">BORRAR</string>
+    <string name="visited">Visitado</string>
+</resources>
