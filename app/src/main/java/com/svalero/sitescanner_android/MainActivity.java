@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Place> places;
+    private ArrayList<Place> places;
     private PlaceAdapter adapter;
 
     @Override
@@ -45,31 +45,33 @@ public class MainActivity extends AppCompatActivity {
         adapter = new PlaceAdapter(this, places);
         recyclerView.setAdapter(adapter);
     }
+
     public void onResume() {
         super.onResume();
         places.clear();
         final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
         places.addAll(db.placeDao().getAll());
         Log.i("Place: ", "Pasa por aqui");
-        for(Place place : places){
+        for (Place place : places) {
             Log.i("Place: ", place.toString());
         }
         adapter.notifyDataSetChanged();
     }
 
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_bar, menu);
         return true;
     }
 
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        if(item.getItemId() == R.id.menuMainAddPlace){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.menuMainAddPlace) {
             Intent intent = new Intent(this, AddPlace.class);
             startActivity(intent);
             return true;
-        } else if(item.getItemId() == R.id.menuMainAllMarkers){
-            //Intent intent = new Intent(this, Markers.class);
-            //startActivity(intent);
+        } else if (item.getItemId() == R.id.menuMainAllMarkers) {
+            Intent intent = new Intent(this, ShowMapAll.class);
+            intent.putExtra("places", places);
+            startActivity(intent);
             return true;
         }
         return false;
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},225);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 225);
             }
         }
     }

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import com.svalero.sitescanner_android.AddPlace;
 import com.svalero.sitescanner_android.R;
 import com.svalero.sitescanner_android.ShowMap;
 import com.svalero.sitescanner_android.db.AppDatabase;
@@ -76,7 +77,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.SuperheroHol
             edit = view.findViewById(R.id.btnEdit);
             map = view.findViewById(R.id.btnMap);
             delete = view.findViewById(R.id.btnDelete);
-            //TODO addplace.class edit.setOnClickListener(v -> editPlace(getAdapterPosition()));
+            edit.setOnClickListener(v -> editPlace(getAdapterPosition()));
             map.setOnClickListener(v -> showMap(getAdapterPosition()));
             delete.setOnClickListener(v -> deletePlace(getAdapterPosition()));
 
@@ -109,13 +110,13 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.SuperheroHol
         AlertDialog dialog = deleteDialog.create();
         dialog.show();
     }
-/*
-   //TODO addplace.class public void editPlace(int position) {
+
+   public void editPlace(int position) {
         Place place = places.get(position);
         Intent intent = new Intent(context, AddPlace.class);
         intent.putExtra("place", place);
         context.startActivity(intent);
     }
-*/
+
 }
 

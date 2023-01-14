@@ -51,4 +51,5 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
 //Mapbox
     implementation 'com.mapbox.maps:android:10.10.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
 }
