@@ -8,4 +8,7 @@
     <item
         android:id="@+id/menuMainAddPlace"
         android:title="@string/actionBarAddPlace" />
+    <item
+        android:id="@+id/menuMainSettings"
+        android:title="@string/preferceSettings" />
 </menu>
