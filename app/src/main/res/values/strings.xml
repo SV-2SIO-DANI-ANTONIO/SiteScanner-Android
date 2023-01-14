@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">SiteScanner-Android</string>
+    <string name="confirmation">Yes</string>
+    <string name="yes">YES</string>
+    <string name="deleteMessage">Are you sure?</string>
+    <string name="no">NO</string>
+    <string name="Map">MAP</string>
+    <string name="Edit">EDIT</string>
+    <string name="Delete">DELETE</string>
+    <string name="visited">Visited</string>
 </resources>
