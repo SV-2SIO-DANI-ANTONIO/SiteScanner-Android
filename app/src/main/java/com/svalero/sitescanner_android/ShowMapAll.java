@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -52,11 +53,9 @@ public class ShowMapAll extends AppCompatActivity implements Style.OnStyleLoaded
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        checkLocationPermission();
-        gps();
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_map_all);
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         Intent intentFrom = getIntent();
         places = (ArrayList<Place>) intentFrom.getSerializableExtra("places");
         mapView = findViewById(R.id.mapView);
@@ -74,18 +73,17 @@ public class ShowMapAll extends AppCompatActivity implements Style.OnStyleLoaded
 
     @Override
     public void onStyleLoaded(@NonNull Style style) {
+
         for (Place place : places) {
-            addMarker(place.getLatitude(), place.getLongitude(), place.getName());
-
+            addMarker(place.getLatitude(), place.getLongitude(), place.getName(), R.mipmap.red_marker_foreground);
         }
-        setCameraPosition(wayLatitude, wayLongitude);
-
+        gps();
     }
 
-    private void addMarker(double latitude, double longitude, String title) {
+    private void addMarker(double latitude, double longitude, String title, int id) {
         PointAnnotationOptions pointAnnotationOptions = new PointAnnotationOptions()
                 .withPoint(Point.fromLngLat(longitude, latitude))
-                .withIconImage(BitmapFactory.decodeResource(getResources(), R.mipmap.red_marker_foreground))
+                .withIconImage(BitmapFactory.decodeResource(getResources(), id))
                 .withTextField(title);
         pointAnnotationManager.create(pointAnnotationOptions);
     }
@@ -101,22 +99,6 @@ public class ShowMapAll extends AppCompatActivity implements Style.OnStyleLoaded
     }
 
 
-    private void checkLocationPermission() {
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 225);
-            }
-        }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 225);
-            }
-        }
-    }
-
     @SuppressLint("MissingPermission")
     private void gps() {
         fusedLocationClient.getLastLocation()
@@ -128,6 +110,13 @@ public class ShowMapAll extends AppCompatActivity implements Style.OnStyleLoaded
                             // Logic to handle location object
                             wayLongitude = location.getLongitude();
                             wayLatitude = location.getLatitude();
+                            Log.i("gps: ", "+++++++++++");
+                            Log.i("gps: ", String.valueOf(location.getLongitude()));
+                            Log.i("gps: ", String.valueOf(location.getLatitude()));
+                            Log.i("gps: ", String.valueOf(location));
+
+                            setCameraPosition(wayLatitude, wayLongitude);
+                            addMarker(wayLatitude, wayLongitude, "", R.drawable.b_marker);
 
                         }
                     }
